@@ -1,0 +1,30 @@
+{
+  "dev": {
+    "username": "root",
+    "password": "password123",
+    "database": "villa_os",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "password123",
+    "database": "villa_os",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "stage": {
+    "username": "root",
+    "password": "password123",
+    "database": "villa_os",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "prod": {
+    "username": "root",
+    "password": "password123",
+    "database": "villa_os",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

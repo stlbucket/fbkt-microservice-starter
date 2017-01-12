@@ -1,11 +1,12 @@
 module.exports = {
-	packageName:	'testLib',
+	packageName:	'vos-permission-service',
 	libRelativePath:	function(){
 		return __dirname;
 	},
 	// serverCommandMap:	require('./serverCommandMap'),
 	// serverExtensions:	require('./serverExtensions'),
-	customRestControllers:	[
-		require('./controller/customRest/pong'),
+  startupPackage: require('./startupPackage'),
+  customRestControllers:	[
+    require('./controller/customRest/role'),
 	],
 };

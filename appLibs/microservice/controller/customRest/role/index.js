@@ -1,45 +1,45 @@
 const fbkt = require('fbkt');
 const Promise = require('bluebird');
 
+const dataStore = require('../../../dataStore');
+
 
 module.exports = {
-	url:      '/pong',
+	url:      '/api/role',
 	restEndpoints: {
 		getAll: {
 			disabled: false,
 			auth:     'none',
 			handler:  function (callInfo) {
-				// console.log('PONG GET ALL');
-				return Promise.resolve(`GET ALL PONG`);
-				// return "GET ALL PONG";
+        return dataStore.getAllRoles();
 			}
 		},
 		getOne: {
 			disabled: false,
 			auth:     'none',
 			handler:  function (callInfo) {
-				return `GET ONE PONG - ${callInfo.params.id}`;
-			}
+        return dataStore.findRole(callInfo.params.name);
+      }
 		},
 		post: {
 			disabled: false,
 			auth:     'none',
 			handler:  function (callInfo) {
-				return `POST PONG - ${callInfo.params.uuid}`;
+				return dataStore.addRole(callInfo.params);
 			}
 		},
 		put: {
 			disabled: false,
 			auth:     'none',
 			handler:  function (callInfo) {
-				return `PUT PONG - ${callInfo.params.uuid}`;
+        throw new Error('NOT IMPLEMENTED - /api/role PUT');
 			}
 		},
 		delete: {
 			disabled: false,
 			auth:     'none',
 			handler:  function (callInfo) {
-				return `DELETE PONG - ${callInfo.params.id}`;
+        return dataStore.removeRole(callInfo.params.name);
 			}
 		},
 	}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev node devServer dev",
+    "dev": "NODE_ENV=dev PORT=20833 node devServer dev",
     "test": "NODE_ENV=test node devServer dev runAllUnitTests",
     "buildDb": "NODE_ENV=buildDb node devServer dev buildDb",
     "testCommand": "NODE_ENV=test node devServer dev testCommand",
@@ -15,6 +15,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fbkt": "^1.0.31"
+    "axios": "^0.15.3",
+    "chai": "^3.5.0",
+    "fbkt": "^1.0.31",
+    "mysql": "^2.12.0",
+    "sequelize": "^3.29.0"
+  },
+  "devDependencies": {
+    "sinon": "^1.17.7"
   }
 }
