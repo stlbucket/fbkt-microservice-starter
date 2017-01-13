@@ -1,9 +1,9 @@
 let Fbkt = require('fbkt');
 let config = require('./config/dev');
-const appLibs = require('./appLibs');
+const microservice = require('./microservice');
 
 const libs = {
-  microservice:	appLibs.microservice
+  permissionService:	microservice
 };
 
 console.log('libs', libs);

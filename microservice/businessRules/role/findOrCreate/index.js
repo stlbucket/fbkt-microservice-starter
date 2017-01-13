@@ -1,16 +1,16 @@
 "use strict";
 const fbkt = require('fbkt');
-const db = require('../../../db');
+const db = require('../../../db/index');
 
 module.exports = (callInfo)=> {
   return fbkt().FbktPipe({
-    name: 'getAllRoles',
+    name: 'findOneRole',
     filename: __filename,
     expectedParams: {},
     pipelineParams: {},
     pipelineSteps: {
-      'getAllRoles': function (callInfo) {
-        return db.role.findAll();
+      'findOneRole': function (callInfo) {
+        return db.role.findOrCreate(callInfo.params);
       }
     }
   }, callInfo);

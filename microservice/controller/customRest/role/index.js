@@ -1,32 +1,40 @@
 const fbkt = require('fbkt');
 const Promise = require('bluebird');
 
-const dataStore = require('../../../dataStore');
-
+const businessRules = require('../../../businessRules/index');
 
 module.exports = {
-	url:      '/api/role',
+	url:      '/role',
 	restEndpoints: {
 		getAll: {
 			disabled: false,
 			auth:     'none',
 			handler:  function (callInfo) {
-        return dataStore.getAllRoles();
+        return businessRules.role.getAll();
 			}
 		},
 		getOne: {
 			disabled: false,
 			auth:     'none',
+      // pathParams: '/:name',
 			handler:  function (callInfo) {
-        return dataStore.findRole(callInfo.params.name);
+        return businessRules.role.findOne({
+          where: {
+            name: callInfo.params.id
+          }
+        });
       }
 		},
 		post: {
 			disabled: false,
 			auth:     'none',
 			handler:  function (callInfo) {
-				return dataStore.addRole(callInfo.params);
-			}
+        return businessRules.role.findOrCreate({
+          where: {
+            name: callInfo.params.name
+          }
+        });
+      }
 		},
 		put: {
 			disabled: false,
@@ -39,8 +47,12 @@ module.exports = {
 			disabled: false,
 			auth:     'none',
 			handler:  function (callInfo) {
-        return dataStore.removeRole(callInfo.params.name);
-			}
+        return businessRules.role.destroy({
+          where: {
+            name: callInfo.params.name
+          }
+        });
+      }
 		},
 	}
 };

@@ -5,8 +5,8 @@ module.exports = {
 	},
 	// serverCommandMap:	require('./serverCommandMap'),
 	// serverExtensions:	require('./serverExtensions'),
-  startupPackage: require('./startupPackage'),
+  startupPackage: require('./startupPackage/index'),
   customRestControllers:	[
-    require('./controller/customRest/role'),
+    require('./controller/customRest/role/index'),
 	],
 };

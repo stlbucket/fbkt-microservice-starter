@@ -1,15 +1,17 @@
 {
-  "name": "fbkt-microservice-starter",
+  "name": "vos-permission-service",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=dev PORT=20833 node devServer dev",
     "test": "NODE_ENV=test node devServer dev runAllUnitTests",
+    "test-node": "grunt mochaTest",
     "buildDb": "NODE_ENV=buildDb node devServer dev buildDb",
     "testCommand": "NODE_ENV=test node devServer dev testCommand",
     "startAndStopServer": "NODE_ENV=test node devServer dev startAndStopServer",
-    "initPackage": "NODE_ENV=dev node devServer dev initPackage"
+    "initPackage": "NODE_ENV=dev node devServer dev initPackage",
+    "commit": "./node_modules/.bin/git-cz "
   },
   "keywords": [],
   "author": "",
@@ -17,11 +19,20 @@
   "dependencies": {
     "axios": "^0.15.3",
     "chai": "^3.5.0",
+    "dotenv-safe": "^4.0.3",
     "fbkt": "^1.0.31",
+    "load-grunt-tasks": "^3.5.2",
     "mysql": "^2.12.0",
     "sequelize": "^3.29.0"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^1.2.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-conventional-changelog": "^6.1.0",
+    "grunt-eslint": "^19.0.0",
+    "grunt-exec": "^1.0.1",
+    "grunt-mocha-test": "^0.13.2",
     "sinon": "^1.17.7"
   }
 }

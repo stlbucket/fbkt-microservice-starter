@@ -4,11 +4,11 @@ const sinon = require('sinon');
 const uuid   = require('node-uuid')
 const expect = require('chai').expect;
 const fbkt   = require('fbkt');
-const db = require('../../../db');
+const db = require('../../../db/index');
 
 const pipeDef = require('./index');
 
-describe.only(__filename, function () {
+describe(__filename, function () {
   let allRoles = [
     {
       name: 'SysAdmin'
@@ -28,8 +28,9 @@ describe.only(__filename, function () {
   beforeEach(function () {
     sandbox = sinon.sandbox.create();
 
-    sandbox.stub(db.role, 'findAll', () => {
-      return Promise.resolve(allRoles);
+    sandbox.stub(db.role, 'findOne', (params) => {
+      const foundRole = allRoles.find(role => role.name === params.where.name);
+      return Promise.resolve(foundRole);
     });
   });
 
@@ -37,10 +38,14 @@ describe.only(__filename, function () {
     sandbox.restore();
   });
 
-  it('find all roles', function (done) {
+  it('find one role', function (done) {
     const testId = uuid.v4();
     const user   = {login: "who@cares.com"};
-    const params = {};
+    const params = {
+      where: {
+        name: 'SysAdmin'
+      }
+    };
 
     const pipe = pipeDef();
 
@@ -50,8 +55,8 @@ describe.only(__filename, function () {
     })
       .then((result)=> {
         fbkt().clog('FUNCTION BUCKET WORKSPACE', pipe.ws, true);
-        expect(result).to.be.an('array');
-        expect(result.length).to.be.ok;
+        expect(result).to.be.an('object');
+        expect(result.name).to.equal(params.where.name);
         done();
       })
       .catch(error=> {

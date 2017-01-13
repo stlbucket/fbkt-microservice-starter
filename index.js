@@ -1,3 +1,3 @@
 module.exports = {
-	microservice:	require('./appLibs/microservice')
+	microservice:	require('./microservice')
 };
