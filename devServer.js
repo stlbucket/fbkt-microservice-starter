@@ -1,5 +1,5 @@
 let Fbkt = require('fbkt');
-let config = require('./config/dev');
+let config = require('./config');
 const microservice = require('./microservice');
 
 const libs = {
